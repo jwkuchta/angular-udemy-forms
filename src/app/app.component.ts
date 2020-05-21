@@ -8,6 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('form') signupForm: NgForm// alternative to passing the form directly to onSubmit
+  defaultQuestion = 'pet'
+  answer
+  genders = ["male", "female", "other"]
 
   suggestUserName() {
     const suggestedName = 'Superuser';
