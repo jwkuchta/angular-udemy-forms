@@ -11,9 +11,19 @@ export class AppComponent {
   defaultQuestion = 'pet'
   answer
   genders = ["male", "female", "other"]
+  user = {
+    username: '',
+    email: '',
+    secret: '',
+    answer: '',
+    gender: ''
+  }
+
+  submitted = false
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // OVERWRITED OTHER VALUES ON THE FORM, NOT JUST USERDATA
     // this.signupForm.setValue({
     //   userData: {
     //     username: suggestedName,
@@ -23,6 +33,7 @@ export class AppComponent {
     //   answer: 'duh',
     //   gender: 'other'
     // })
+    
     // BETTER APPROACH
     this.signupForm.form.patchValue({
       userData: {
@@ -37,5 +48,13 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.signupForm)
+    this.user.username = this.signupForm.value.userData.username
+    this.user.email = this.signupForm.value.userData.email
+    this.user.secret = this.signupForm.value.secret
+    this.user.answer = this.signupForm.value.answer
+    this.user.gender = this.signupForm.value.gender
+
+    this.submitted = true
+
   }
 }
