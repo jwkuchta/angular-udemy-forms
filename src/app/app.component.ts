@@ -56,5 +56,7 @@ export class AppComponent {
 
     this.submitted = true
 
+    this.signupForm.reset()
   }
+  
 }
