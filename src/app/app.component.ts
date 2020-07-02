@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
   @ViewChild('form') signupForm: NgForm// alternative to passing the form directly to onSubmit
   defaultQuestion = 'pet'
-  answer
+  answer = ''
   genders = ["male", "female", "other"]
   user = {
     username: '',
@@ -23,15 +23,10 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'Superuser';
-    // OVERWRITED OTHER VALUES ON THE FORM, NOT JUST USERDATA
+    // OVERWRITES OTHER VALUES ON THE FORM, NOT JUST USERDATA
     // this.signupForm.setValue({
-    //   userData: {
-    //     username: suggestedName,
-    //     email: 'something@something.something',
-    //   },
-    //   secret: 'pet',
-    //   answer: 'duh',
-    //   gender: 'other'
+    //   userData: { username: suggestedName, email: 'something@something.something'},
+    //   secret: 'pet', answer: 'duh', gender: 'other'
     // })
     
     // BETTER APPROACH
@@ -42,12 +37,7 @@ export class AppComponent {
     })
   }
 
-  // onSubmit(form: NgForm) {
-  //   console.log(form)
-  // }
-
   onSubmit() {
-    console.log(this.signupForm)
     this.user.username = this.signupForm.value.userData.username
     this.user.email = this.signupForm.value.userData.email
     this.user.secret = this.signupForm.value.secret
@@ -56,6 +46,7 @@ export class AppComponent {
 
     this.submitted = true
 
+    // this will reset the state
     this.signupForm.reset()
   }
   
